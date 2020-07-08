@@ -3,7 +3,7 @@ var express = require('express')
   , path = require('path')
   , fs = require('fs')
   , routes = require('./routes')
-  , password = require('./api/v1/password')
+  , customer = require('./api/v1/customer')
   , bodyParser = require('body-parser');
 
 var router = express.Router();
@@ -21,7 +21,7 @@ app.set('port', process.env.PORT || 3000);
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', routes.index);
-app.post('/api/v1/password', password.find);
+app.post('/api/v1/customer', customer.find);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

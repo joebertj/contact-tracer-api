@@ -1,29 +1,5 @@
 extends layout
 
 block content
-  script(src="/shaone.js")
-  script(src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha1.js")
-  script(src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/sha1-min.js")
-  script(src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/lib-typedarrays-min.js")
-  script(src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js")
   script(src="https://code.jquery.com/jquery-3.4.0.js")
   h2 #{title}
-
-  h4 Type your password in the search box. It will be hashed using SHA1 before being sent to the server. Only you will know what you entered.
-  
-  h3
-    div(id="result" class=".h1")
-
-  form(name="passform" onsubmit="hashPass();return false;")
-    div(class="container h-100")
-      div(class="d-flex justify-content-center h-100")
-        div(class="searchbar")
-          input(class="search_input", type="password", name="plain", id="plain", placeholder="Search...")
-          input(type="hidden", name="shaone")
-          a(href="javascript:hashPass()", class="search_icon")
-            i(class="fas fa-search")
-   
-  p Now using AWS Keyspaces. 30 Million most prevalent breached passwords were loaded out of 551 Million in the database. 
-
-  h4 To use the API make a POST request to https://awitperl.kenchlightyear.com/api/v1/password and send shaone as parameter where it is the SHA1 of the password you are trying to check. The JSON reply will be { count: value }
-

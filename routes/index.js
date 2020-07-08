@@ -1,3 +1,3 @@
 exports.index = function(req, res){
-    res.render('index', { title: 'Password Checker' });
+    res.render('index', { title: 'Contact Tracer' });
 };

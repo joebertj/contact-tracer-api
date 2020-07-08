@@ -22,14 +22,14 @@ var client = new cassandra.Client(
 );
 
 exports.find = function(req, res){
-    const query = 'SELECT count FROM password WHERE shaone = ?';
-    var shaone = req.body.shaone;	
-    client.execute(query, [ shaone ], function(err, result) {
+    const query = 'SELECT last FROM customer WHERE first = ?';
+    var first = req.body.first;	
+    client.execute(query, [ first ], function(err, result) {
         assert.ifError(err);
 	if(result.rows.length == 1) {
-            res.end(sprintf('{ "count" : %s}', result.rows[0].count));
+            res.end(sprintf('{ "last" : %s}', result.rows[0].last));
 	}else{
-            res.end(sprintf('{ "count" : 0}'));
+            res.end(sprintf('{ "last" : false}'));
 	}
     });
 }
