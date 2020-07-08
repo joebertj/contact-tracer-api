@@ -22,7 +22,7 @@ var client = new cassandra.Client(
 );
 
 exports.find = function(req, res){
-    const query = 'SELECT last FROM customer WHERE first = ?';
+    const query = 'SELECT last FROM customer WHERE first = ? ALLOW FILTERING';
     var first = req.body.first;	
     client.execute(query, [ first ], function(err, result) {
         assert.ifError(err);
