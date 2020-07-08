@@ -23,13 +23,22 @@ var client = new cassandra.Client(
 
 exports.find = function(req, res){
     const query = 'SELECT last FROM customer WHERE first = ? ALLOW FILTERING';
-    var first = req.body.first;	
-    client.execute(query, [ first ], function(err, result) {
+    var data = req.body;	
+    client.execute(query, [ data.first ], function(err, result) {
         assert.ifError(err);
 	if(result.rows.length == 1) {
             res.end(sprintf('{ "last" : %s}', result.rows[0].last));
 	}else{
             res.end(sprintf('{ "last" : false}'));
 	}
+    });
+}
+
+exports.add = function(req, res){
+    const query = 'INSERT INTO customer (first, last, address, barangay, city, province, number, email, temperature, timestamp, establishment, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    var data = req.body;	
+    client.execute(query, [ data.first, data.last, data.address, data.barangay, data.city, data.province, data.number, data.email, data.temperature, new Date(data.timestamp), data.establishment, data.latitude, data.longitude], { prepare : true , consistency: cassandra.types.consistencies.localQuorum }, function(err, result) {
+        assert.ifError(err);
+        res.json(data);
     });
 }
