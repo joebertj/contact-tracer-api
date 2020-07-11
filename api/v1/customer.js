@@ -22,15 +22,11 @@ var client = new cassandra.Client(
 );
 
 exports.find = function(req, res){
-    const query = 'SELECT last FROM customer WHERE first = ? ALLOW FILTERING';
+    const query = 'SELECT first, last, address, barangay, city, province, number, email, temperature, timestamp FROM customer WHERE uuid = ?';
     var data = req.body;	
-    client.execute(query, [ data.first ], function(err, result) {
+    client.execute(query, [ data.uuid ], function(err, result) {
         assert.ifError(err);
-	if(result.rows.length == 1) {
-            res.end(sprintf('{ "last" : %s}', result.rows[0].last));
-	}else{
-            res.end(sprintf('{ "last" : false}'));
-	}
+	res.json(result.rows[0]);
     });
 }
 
