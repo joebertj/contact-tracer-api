@@ -35,9 +35,9 @@ exports.find = function(req, res){
 }
 
 exports.add = function(req, res){
-    const query = 'INSERT INTO customer (first, last, address, barangay, city, province, number, email, temperature, timestamp, establishment, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    const query = 'INSERT INTO customer (first, last, address, barangay, city, province, number, email, temperature, timestamp, establishment, uuid, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
     var data = req.body;	
-    client.execute(query, [ data.first, data.last, data.address, data.barangay, data.city, data.province, data.number, data.email, data.temperature, new Date(data.timestamp), data.establishment, data.latitude, data.longitude], { prepare : true , consistency: cassandra.types.consistencies.localQuorum }, function(err, result) {
+    client.execute(query, [ data.first, data.last, data.address, data.barangay, data.city, data.province, data.number, data.email, data.temperature, new Date(data.timestamp), data.establishment, data.uuid, data.latitude, data.longitude], { prepare : true , consistency: cassandra.types.consistencies.localQuorum }, function(err, result) {
         assert.ifError(err);
         res.json(data);
     });

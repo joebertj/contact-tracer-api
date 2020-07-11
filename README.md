@@ -1,4 +1,10 @@
-# JX
+# Contact Tracer API
+
+## Testing
+`curl --header "Content-Type: application/json" --request POST --data @customer.json --insecure https://contact-trac
+er-api-jx-staging.kenchlightyear.com/api/v1/customer`
+
+## JX
 
 JX is a command line tool for installing and using [Jenkins X](https://jenkins-x.io/).
 
@@ -13,11 +19,11 @@ JX is a command line tool for installing and using [Jenkins X](https://jenkins-x
 ![Build Status](https://img.shields.io/endpoint?url=https%3A%2F%2Fstatusbadge-jx.jenkins-x.live%2Fjx)
 [![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://slack.k8s.io/)
 
-## Installing
+### Installing
 
 Check out [how to install jx](https://jenkins-x.io/docs/getting-started/setup/install/).
 
-## Getting Started
+### Getting Started
 
 Please check out the [Getting Started Guide](https://jenkins-x.io/docs/getting-started/) on how to:
 
@@ -26,7 +32,7 @@ Please check out the [Getting Started Guide](https://jenkins-x.io/docs/getting-s
 
 Then [what to do next when you have Jenkins X installed](https://jenkins-x.io/docs/create-project/).
 
-## Welcome to the Jenkins X Community
+### Welcome to the Jenkins X Community
 
 We value respect and inclusiveness and follow the [CDF Code of Conduct](https://github.com/cdfoundation/toc/blob/master/CODE_OF_CONDUCT.md) in all interactions.
 
@@ -40,7 +46,7 @@ Talk to us on our slack channels, which are part of the Kubernetes slack. Join K
 
 Find out more about our bi-weekly office hours, where we discuss all things Jenkins X, and other events [here](https://jenkins-x.io/community/).
 
-## Getting Help
+### Getting Help
 
 To find out the available commands type:
 ```
@@ -52,12 +58,12 @@ jx help create
 ```
 You can also browse the [jx command reference documentation](https://jenkins-x.io/commands/jx/).
 
-## Reference
+### Reference
 
 * [Command Line Reference](https://jenkins-x.io/commands/jx/#jx)
   
   
-## Opening Consoles
+### Opening Consoles
 To open a console for `foo`:
 ```sh
 jx open foo
@@ -66,7 +72,7 @@ If you do not know the name:
 ```sh
 jx open
 ```
-## Tail logs
+### Tail logs
 
 To tail the logs of anything running on Kubernetes (jenkins or your own applications) type.
 ```sh
@@ -80,7 +86,7 @@ jx logs -f cheese
 ```
 Then if there's only one deployment with a name that contains `cheese` then it'll tail the logs of the latest pod or will prompt you to choose the exact deployment to use.
 
-## Remote shells
+### Remote shells
 
 You can open a remote shell inside any pods container via the `rsh` command:
 ```sh
@@ -94,7 +100,7 @@ Pass `-c` to specify the container name. e.g. to open a shell in a maven build p
 ```sh
 jx rsh -c maven maven
 ```
-## Importing or Creating apps
+### Importing or Creating apps
 
 To import an application from the current directory:
 ```sh
@@ -112,7 +118,7 @@ Or to create a new project from scratch:
 ```sh
 jx create project
 ```
-## Starting builds
+### Starting builds
 
 To start a pipeline using a specific name try:
 ```sh
@@ -130,7 +136,7 @@ You can start and tail the build log via:
 ```sh
 jx start pipeline -t
 ```
-## Viewing Apps and Environments
+### Viewing Apps and Environments
 
 To view environments for a team:
 ```sh
@@ -140,7 +146,7 @@ To view the application versions across environments:
 ```sh
 jx get version
 ```
-## Manual promotions
+### Manual promotions
 
 Typically we setup Environments to use _automatic_ promotion so that the CI / CD pipelines will automatically promote versions through the available Environments using the CI / CD Pipeline.
 
@@ -152,7 +158,7 @@ Or if you wish to use a custom namespace:
 ```sh
 jx promote myapp -n my-dummy-namespace
 ```
-## Switching Environments
+### Switching Environments
 
 The `jx` CLI tool uses the same Kubernetes cluster and namespace context as `kubectl`. 
 
@@ -187,7 +193,7 @@ or
 ```sh
 jx ns awesome-staging
 ```
-## Switching Clusters
+### Switching Clusters
 
 If you have multiple Kubernetes clusters then you can switch between them via:
 ```sh
@@ -195,7 +201,7 @@ jx ctx
 ```
 **Note** that changing the namespace ,environment or cluster changes the current context for **ALL** shells!
 
-### Sub shells
+#### Sub shells
 
 So if you want to work temporarily with, say, the production cluster we highly recommend you use a sub shell for that.
 ```sh
@@ -207,7 +213,7 @@ jx shell
 ```
 Then your bash prompt will be updated to reflect that you are in a different context and/or namespace. Any changes to the namespace, environment or context will be local to the current shell only!    
 
-### Setting your prompt
+#### Setting your prompt
 
 You can use the `jx prompt` to configure your CLI prompt to display the current team and environment you are working within:          
 ```sh
@@ -219,7 +225,7 @@ PROMPT='$(jx prompt)'$PROMPT
 ```
 **Note** that the prompt is updated automatically for you via the `jx shell` command too.
 
-### Bash completion
+#### Bash completion
 
 On a Mac to enable bash completion try:
 ```sh
@@ -234,7 +240,7 @@ For more help try:
 ```sh
 jx help completion bash
 ```
-## Addons
+### Addons
 
 We are adding a number of addon capabilities to Jenkins X. To add or remove addons use the `jx create addon` or `jx delete addon` commands.
 
@@ -249,15 +255,15 @@ This will:
 * create a new user in Gitea (via the `jx create git user -n gitea` command).
 * create a new Git API token in Gitea (via the `jx create git token -n gitea -p password username` command).
 
-## Troubleshooting
+### Troubleshooting
 
 We have tried to collate common issues here with work arounds. If your issue isn't listed here please [let us know](https://github.com/jenkins-x/jx/issues/new).
 
-### Other issues
+#### Other issues
 
 Please [let us know](https://github.com/jenkins-x/jx/issues/new) and see if we can help? Good luck!
 
-## Contributing
+### Contributing
 
 We welcome your contributions.
 
