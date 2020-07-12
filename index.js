@@ -21,7 +21,7 @@ app.set('port', process.env.PORT || 3000);
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', routes.index);
-app.get('/api/v1/customers', customer.find);
+app.post('/api/v1/customers', customer.find);
 app.post('/api/v1/customer', customer.add);
 
 http.createServer(app).listen(app.get('port'), function(){
