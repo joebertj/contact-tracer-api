@@ -1,8 +1,12 @@
 # Contact Tracer API
 
 ## Testing
-`curl --header "Content-Type: application/json" --request POST --data @customer.json --insecure https://contact-trac
-er-api-jx-staging.kenchlightyear.com/api/v1/customer`
+```
+curl https://contact-tracer-api-jx-staging.kenchlightyear.com/api/v1/customer?uuid=242f7683-ef28-400c-baf4-d1
+a7c3fc51fd
+curl --header "Content-Type: application/json" --request POST --data @customer.json https://contact-trac
+er-api-jx-staging.kenchlightyear.com/api/v1/customer
+```
 
 ## JX
 
