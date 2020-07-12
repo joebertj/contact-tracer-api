@@ -30,7 +30,7 @@ exports.find = function(req, res){
     if(typeof data.establishmentid !== 'undefined' && data.establishmentid) {
     client.execute(query, [ data.establishmentid ], { prepare : true }, function(err, result) {
         assert.ifError(err);
-	res.json(result.rows[0]);
+	res.json(result.rows);
     });
     }else{
 	res.end("establishmentid is empty");
